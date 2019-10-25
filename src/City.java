@@ -22,4 +22,12 @@ public class City {
     public int getNumber(){
         return this.number;
     }
+    
+    public int getX(){
+        return this.x;
+    }
+    
+    public int getY(){
+        return this.y;
+    }
 }

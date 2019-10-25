@@ -9,17 +9,19 @@
  * @author michael
  */
 import java.util.Scanner;
-import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<City> cities = new ArrayList<>();
-        while(sc.hasNext()){
+        CityPopulation cityPopulation = new CityPopulation();
+        while(sc.hasNextInt()){
             int n = sc.nextInt();
             int x = sc.nextInt();
             int y = sc.nextInt();
             City city = new City(n,x,y);
-            cities.add(city);
+            cityPopulation.addToPopulation(city);
         }
+        cityPopulation.countTotalCity();
+        cityPopulation.setAllDistances();
+        cityPopulation.getAllDistances();
     }
 }
