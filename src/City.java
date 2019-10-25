@@ -9,11 +9,17 @@
  * @author michael
  */
 public class City {
-    public int x;
-    public int y;
+    private int number;
+    private int x;
+    private int y;
     
-    public City(int x, int y){
+    public City(int number, int x, int y){
+        this.number=number;
         this.x=x;
         this.y=y;
+    }
+    
+    public int getNumber(){
+        return this.number;
     }
 }
