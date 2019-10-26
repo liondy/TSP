@@ -9,6 +9,7 @@
  * @author michael
  */
 import java.util.ArrayList;
+import java.util.Collections;
 public class CityPopulation {
     ArrayList<City> cities = new ArrayList<>();
     int totalCity;
@@ -26,6 +27,10 @@ public class CityPopulation {
     
     public City getCities(int i){
         return this.cities.get(i-1);
+    }
+    
+    public void setDistanceMap(double[][] distance){
+        this.distance = distance;
     }
     
     public void setAllDistances(){
@@ -54,8 +59,12 @@ public class CityPopulation {
     
     public void calcFitness(){
         this.fitness = 0;
-        for (int i = 1; i < this.totalCity; i++) {
+        for (int i = 0; i <= this.totalCity-2; i++) {
             this.fitness+=this.distance[this.cities.get(i).getNumber()][this.cities.get(i+1).getNumber()];
         }
+    }
+    
+    public void shuffle(){
+        Collections.shuffle(this.cities);
     }
 }
