@@ -10,18 +10,18 @@
  */
 import java.util.ArrayList;
 public class Route {
-    private ArrayList<City> cities;
+    private ArrayList<City> arrayCity;
     private int totalCity;
     private double fitness;
     
     public Route(ArrayList<City> cities,double distance){
-        this.cities = cities;
+        this.arrayCity = cities;
         this.totalCity = cities.size();
         this.fitness = 1.0 / distance;
     }
     
     public ArrayList<City> getRoute(){
-        return this.cities;
+        return this.arrayCity;
     }
     
     public int getTotalCity(){
@@ -33,6 +33,6 @@ public class Route {
     }
     
     public City getCities(int i){
-        return this.cities.get(i-1);
+        return this.arrayCity.get(i-1);
     }
 }

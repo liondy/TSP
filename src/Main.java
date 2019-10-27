@@ -10,6 +10,7 @@
  */
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -44,12 +45,13 @@ public class Main {
         RoutePopulation routePopulation = new RoutePopulation(populationSize);
         RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
         for (int i = 0; i < populationSize; i++) {
-            ArrayList<City> newCityRoute = routeManager.shuffle();
 //            for (int j = 0; j < newCityRoute.size(); j++) {
 //                System.out.print(newCityRoute.get(j).getNumber()+" ");
 //            }
 //            System.out.println();
-            routePopulation.addNewRoute(i, new Route(newCityRoute,routeManager.getDistance()));
+            Route route = new Route(cities,routeManager.getDistance());
+            routePopulation.addNewRoute(i, route);
+            Collections.shuffle(cities);
             System.out.println();
         }
 //        routePopulation.printAllSolution();
