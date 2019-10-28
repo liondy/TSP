@@ -45,15 +45,11 @@ public class Main {
         RoutePopulation routePopulation = new RoutePopulation(populationSize);
         RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
         for (int i = 0; i < populationSize; i++) {
-//            for (int j = 0; j < newCityRoute.size(); j++) {
-//                System.out.print(newCityRoute.get(j).getNumber()+" ");
-//            }
-//            System.out.println();
-            Route route = new Route(cities,routeManager.getDistance());
+            ArrayList<City> newCityRoute = (ArrayList) cities.clone();
+            Collections.shuffle(newCityRoute);
+            Route route = new Route(newCityRoute,routeManager.getDistance());
             routePopulation.addNewRoute(i, route);
-            Collections.shuffle(cities);
-            System.out.println();
         }
-//        routePopulation.printAllSolution();
+        routePopulation.printAllSolution();
     }
 }

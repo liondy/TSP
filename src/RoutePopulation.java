@@ -17,7 +17,6 @@ public class RoutePopulation {
     
     public void addNewRoute(int idx, Route route){
         this.population[idx] = route;
-        this.printAllSolution();
     }
     
     public Route getRoute(int idx){
