@@ -12,12 +12,32 @@ import java.util.ArrayList;
 public class Route {
     private ArrayList<City> arrayCity;
     private int totalCity;
+    private double distance;
     private double fitness;
+    private double peluang;
+    private double cumulative;
     
     public Route(ArrayList<City> cities,double distance){
         this.arrayCity = cities;
         this.totalCity = cities.size();
+        this.distance = distance;
         this.fitness = 1.0 / distance;
+    }
+    
+    public void setPeluang(double peluang){
+        this.peluang = peluang;
+    }
+    
+    public void setCumulative(double cumulative){
+        this.cumulative = cumulative;
+    }
+    
+    public double getPeluang(){
+        return this.peluang;
+    }
+    
+    public double getCumulative(){
+        return this.cumulative;
     }
     
     public ArrayList<City> getRoute(){
@@ -30,6 +50,10 @@ public class Route {
     
     public double getFitness(){
         return this.fitness;
+    }
+    
+    public double getDistance(){
+        return this.distance;
     }
     
     public City getCities(int i){

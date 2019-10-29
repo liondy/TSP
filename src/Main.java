@@ -36,20 +36,20 @@ public class Main {
                 }
             }
         }
-//        for (int i = 0; i < cityDistanceMap.length; i++) {
-//            for (int j = 0; j < cityDistanceMap.length; j++) {
-//                System.out.print(cityDistanceMap[i][j]+" ");
-//            }
-//            System.out.println();
-//        }
         RoutePopulation routePopulation = new RoutePopulation(populationSize);
-        RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
+        double totalFitness = 0;
         for (int i = 0; i < populationSize; i++) {
-            ArrayList<City> newCityRoute = (ArrayList) cities.clone();
-            Collections.shuffle(newCityRoute);
-            Route route = new Route(newCityRoute,routeManager.getDistance());
+            RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
+            ArrayList<City> newCityRoute = (ArrayList) routeManager.shuffle().clone();
+            double distance = routeManager.getDistance();
+            Route route = new Route(newCityRoute,distance);
             routePopulation.addNewRoute(i, route);
+            totalFitness += route.getFitness();
         }
+        routePopulation.setTotalFitness(totalFitness);
+        routePopulation.countPeluangKumulatif();
         routePopulation.printAllSolution();
+        routePopulation = GA.evolve(routePopulation);
+        
     }
 }
