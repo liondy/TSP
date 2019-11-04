@@ -50,6 +50,5 @@ public class Main {
         routePopulation.countPeluangKumulatif();
         routePopulation.printAllSolution();
         routePopulation = GA.evolve(routePopulation);
-        
     }
 }
