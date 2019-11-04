@@ -12,7 +12,7 @@ public class GA {
     
     public static RoutePopulation evolve(RoutePopulation population){
         RoutePopulation nextGeneration = new RoutePopulation(population.getPopulationSize());
-        for (int i = 0; i < nextGeneration.getPopulationSize(); i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println();
             Route parent1 = selection(population);
             Route parent2 = selection(population);
@@ -43,9 +43,10 @@ public class GA {
     }
     
     private static int binarySearch(RoutePopulation population, int left, int right, double selection){
-        if(right>left){
+        if(right>=left){
             int idx = (left+right)/2;
-            if(population.getPopulation()[idx].getCumulative()>=selection && selection<= population.getPopulation()[idx+1].getCumulative()){
+            System.out.println("index= "+idx);
+            if(population.getPopulation()[idx].getCumulative()<=selection && selection<= population.getPopulation()[idx+1].getCumulative()){
                 return idx;
             }
             if(population.getPopulation()[idx].getCumulative()>selection){
