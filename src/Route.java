@@ -24,6 +24,14 @@ public class Route {
         this.fitness = 1.0 / distance;
     }
     
+    public void setSomeCity(City city, int i){
+        this.arrayCity.add(i, city);
+    }
+    
+    public void setRoute(ArrayList<City> cities){
+        this.arrayCity = cities;
+    }
+    
     public void setPeluang(double peluang){
         this.peluang = peluang;
     }

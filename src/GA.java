@@ -68,6 +68,20 @@ public class GA {
         Route[] children = new Route[2];
         Random rand = new Random();
         int cut = rand.nextInt(solution1.getTotalCity());
+        ArrayList<City> temp1 = (ArrayList<City>) solution1.getRoute().clone();
+        ArrayList<City> temp2 = (ArrayList<City>) solution2.getRoute().clone();
+        ArrayList<City> res1 = new ArrayList<City>();
+        ArrayList<City> res2 = new ArrayList<City>();
+//        Route children1 = new Route(solution1.getRoute(),solution1.getDistance());
+//        Route children2 = new Route(solution2.getRoute(),solution2.getDistance());
+        for (int i = 0; i < cut; i++) {
+            res1.add(i, temp2.get(i));
+            res2.add(i, temp1.get(i));
+        }
+        for (int i = cut; i < solution1.getTotalCity(); i++) {
+            res1.add(i, temp1.get(i));
+            res2.add(i, temp2.get(i));
+        }
         return children;
     }
     
