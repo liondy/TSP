@@ -48,6 +48,16 @@ public class RoutePopulation {
         return this.population;
     }
     
+    public Route getFittest() {
+        Route fittest = this.population[0];
+        for (int i = 1; i < this.population.length; i++) {
+            if (fittest.getFitness() <= this.getRoute(i).getFitness()) {
+                fittest = getRoute(i);
+            }
+        }
+        return fittest;
+    }
+    
     public void printAllSolution(){
         for (int i = 0; i < this.population.length; i++) {
             if(this.population[i]!=null){

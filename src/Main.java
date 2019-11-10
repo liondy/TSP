@@ -47,7 +47,12 @@ public class Main {
         }
         routePopulation.setTotalFitness(totalFitness);
         routePopulation.countPeluangKumulatif();
-        routePopulation.printAllSolution();
         routePopulation = GA.evolve(routePopulation);
+        for (int i = 0; i < 100; i++) {
+            routePopulation = GA.evolve(routePopulation);
+        }
+        System.out.println("Finished");
+        System.out.println("Solution: ");
+        System.out.println(routePopulation.getFittest());
     }
 }

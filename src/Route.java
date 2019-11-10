@@ -24,12 +24,24 @@ public class Route {
         this.fitness = 1.0 / distance;
     }
     
-    public void setSomeCity(City city, int i){
-        this.arrayCity.add(i, city);
-    }
-    
     public void setRoute(ArrayList<City> cities){
         this.arrayCity = cities;
+        this.calcDistance(cities);
+        this.fitness = 1.0 / this.distance;
+    }
+    
+    private void calcDistance(ArrayList<City> cities){
+        double dist = 0;
+        for (int i = 0; i < cities.size()-1; i++) {
+            int deltaX = cities.get(i).getX() - cities.get(i+1).getX();
+            int deltaY = cities.get(i).getY() - cities.get(i+1).getY();
+            dist+=Math.sqrt((deltaX*deltaX) + (deltaY*deltaY));
+        }
+        this.setDistance(dist);
+    }
+    
+    private void setDistance(double distance){
+        this.distance = distance;
     }
     
     public void setPeluang(double peluang){
