@@ -15,24 +15,26 @@ public class GA {
     
     public static RoutePopulation evolve(RoutePopulation population){
         RoutePopulation nextGeneration = new RoutePopulation(population.getPopulationSize());
-        int j = 0;
-        for (int i = 0; i < 10; i++) {
+//        System.out.println("size = "+nextGeneration.getPopulationSize());
+        int j = -1;
+        for (int i = 0; i < nextGeneration.getPopulationSize()-1; i++) {
+            j++;
             Route parent1 = selection(population);
             Route parent2 = selection(population);
 //            System.out.println("parent1: ");
-//            for (int j = 0; j < parent1.getTotalCity(); j++) {
-//                System.out.print(parent1.getRoute().get(j).getNumber()+" ");
+//            for (int k = 0; k < parent1.getTotalCity(); k++) {
+//                System.out.print(parent1.getRoute().get(k).getNumber()+" ");
 //            }
 //            System.out.println("parent2: ");
-//            for (int j = 0; j < parent2.getTotalCity(); j++) {
-//                System.out.print(parent2.getRoute().get(j).getNumber()+" ");
+//            for (int k = 0; k < parent2.getTotalCity(); k++) {
+//                System.out.print(parent2.getRoute().get(k).getNumber()+" ");
 //            }
             Route[] child = crossover(parent1,parent2);
             Random rand = new Random();
             int mut = rand.nextInt(2);
             mutation(child[mut]);
-            nextGeneration.addNewRoute(j++, child[0]);
-            nextGeneration.addNewRoute(j++, child[1]);
+            nextGeneration.addNewRoute(j, child[0]);
+            nextGeneration.addNewRoute(j, child[1]);
         }
         return nextGeneration;
     }
@@ -41,7 +43,7 @@ public class GA {
         double selection = Math.random();
 //        System.out.println("selection: "+selection);
         int idx = binarySearch(population,0,population.getPopulationSize()-1,selection);
-//        System.out.println("idx: "+idx);
+//        System.out.println("Selected idx: "+idx);
         if(idx!=-1){
             Route selected = population.getPopulation()[idx];
             return selected;
@@ -52,6 +54,8 @@ public class GA {
     private static int binarySearch(RoutePopulation population, int left, int right, double selection){
         if(right>=left){
             int idx = (left+right)/2;
+//            System.out.println("idx: "+idx);
+            if(idx==right-1)return idx;
             if(population.getPopulation()[idx].getCumulative()<=selection && selection<= population.getPopulation()[idx+1].getCumulative()){
                 return idx;
             }
@@ -60,17 +64,14 @@ public class GA {
             }
             return binarySearch(population,idx+1,right,selection);
         }
-        return -1;
-    }
-    
-    public void getFitnessFunction(){
-        
+        return 0;
     }
     
     private static Route[] crossover(Route solution1, Route solution2){
         Route[] children = new Route[2];
         Random rand = new Random();
         int cut = rand.nextInt(solution1.getTotalCity());
+//        System.out.println("cut: "+cut);
         ArrayList<City> parent1 = (ArrayList<City>) solution1.getRoute().clone();
         ArrayList<City> parent2 = (ArrayList<City>) solution2.getRoute().clone();
         ArrayList<City> res1 = parent1;

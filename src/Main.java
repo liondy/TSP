@@ -37,8 +37,16 @@ public class Main {
         }
         RoutePopulation routePopulation = new RoutePopulation(populationSize);
         double totalFitness = 0;
+        RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
+        Route firstRoute = new Route(cities,routeManager.getDistance());
+        System.out.println("First Generation, the route is: ");
+        for (int i = 0; i < cities.size(); i++) {
+            System.out.print(cities.get(i).getNumber()+" ");
+        }
+        System.out.println();
+        System.out.println("Fitness: "+ firstRoute.getFitness());
+        System.out.println("Distance: "+firstRoute.getDistance());
         for (int i = 0; i < populationSize; i++) {
-            RouteManager routeManager = new RouteManager(cities,cityDistanceMap);
             ArrayList<City> newCityRoute = (ArrayList) routeManager.shuffle().clone();
             double distance = routeManager.getDistance();
             Route route = new Route(newCityRoute,distance);
@@ -47,12 +55,18 @@ public class Main {
         }
         routePopulation.setTotalFitness(totalFitness);
         routePopulation.countPeluangKumulatif();
+//        routePopulation.printAllSolution();
         routePopulation = GA.evolve(routePopulation);
         for (int i = 0; i < 100; i++) {
             routePopulation = GA.evolve(routePopulation);
         }
-        System.out.println("Finished");
-        System.out.println("Solution: ");
-        System.out.println(routePopulation.getFittest());
+        System.out.println("After 101 generation, best route is: ");
+        Route solution = routePopulation.getFittest();
+        for (int i = 0; i < solution.getTotalCity(); i++) {
+            System.out.print(solution.getRoute().get(i).getNumber()+" ");
+        }
+        System.out.println();
+        System.out.println("Fitness: "+solution.getFitness());
+        System.out.println("Distance: "+solution.getDistance());
     }
 }

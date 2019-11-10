@@ -51,8 +51,10 @@ public class RoutePopulation {
     public Route getFittest() {
         Route fittest = this.population[0];
         for (int i = 1; i < this.population.length; i++) {
-            if (fittest.getFitness() <= this.getRoute(i).getFitness()) {
-                fittest = getRoute(i);
+            if(this.population[i]!=null){
+                if (fittest.getFitness() <= this.population[i].getFitness()) {
+                    fittest = this.population[i];
+                }
             }
         }
         return fittest;
