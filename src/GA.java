@@ -30,7 +30,7 @@ public class GA {
         return nextGeneration;
     }
     
-    public static Route selection(RoutePopulation population){
+    private static Route selection(RoutePopulation population){
         double selection = Math.random();
         int idx = binarySearch(population,0,population.getPopulationSize()-1,selection);
         if(idx!=-1){
@@ -76,7 +76,7 @@ public class GA {
         return children;
     }
     
-    public static void mutation(Route solution){
+    private static void mutation(Route solution){
         Random rand = new Random();
         int idx1 = rand.nextInt(solution.getTotalCity());
         int idx2 = rand.nextInt(solution.getTotalCity());

@@ -11,7 +11,7 @@
 import java.util.ArrayList;
 public class Route {
     private ArrayList<City> arrayCity;
-    private int totalCity;
+    private final int totalCity;
     private double distance;
     private double fitness;
     private double peluang;
@@ -74,9 +74,5 @@ public class Route {
     
     public double getDistance(){
         return this.distance;
-    }
-    
-    public City getCities(int i){
-        return this.arrayCity.get(i-1);
     }
 }

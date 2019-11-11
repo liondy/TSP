@@ -12,22 +12,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class RouteManager {
     
-    private ArrayList<City> cityRoute;
-    private double[][] distanceMap;
+    private final ArrayList<City> cityRoute;
+    private final double[][] distanceMap;
     private double distance;
     
     public RouteManager(ArrayList<City> cities, double[][] distanceMap){
         this.cityRoute = cities;
         this.distanceMap = distanceMap;
         this.calcDistance();
-    }
-    
-    public City getCity(int i){
-        return this.cityRoute.get(i-1);
-    }
-    
-    public int getTotalCities(){
-        return this.cityRoute.size();
     }
     
     public ArrayList<City> shuffle(){
@@ -45,5 +37,13 @@ public class RouteManager {
         for (int i = 1; i < this.getTotalCities(); i++) {
             this.distance+=this.distanceMap[this.getCity(i).getNumber()][this.getCity(i+1).getNumber()];
         }
+    }
+    
+    private int getTotalCities(){
+        return this.cityRoute.size();
+    }    
+    
+    private City getCity(int i){
+        return this.cityRoute.get(i-1);
     }
 }

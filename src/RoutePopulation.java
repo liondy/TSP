@@ -59,21 +59,4 @@ public class RoutePopulation {
         }
         return fittest;
     }
-    
-    public void printAllSolution(){
-        for (int i = 0; i < this.population.length; i++) {
-            if(this.population[i]!=null){
-                System.out.print("Solution "+ i + ": " );
-                for (int j = 1; j <= this.population[i].getTotalCity(); j++) {
-                    System.out.print(this.population[i].getRoute().get(j-1).getNumber()+" ");
-                }
-                System.out.print("Distance: "+this.population[i].getDistance()+" ");
-                System.out.print("Fitness: "+this.population[i].getFitness()+" ");
-                System.out.print("Peluang: "+this.population[i].getPeluang()+" ");
-                System.out.print("Cumulative: "+this.population[i].getCumulative());
-                System.out.println();
-            }
-        }
-    }
-    
 }
