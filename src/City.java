@@ -9,9 +9,9 @@
  * @author michael
  */
 public class City {
-    private int number;
-    private int x;
-    private int y;
+    private final int number;
+    private final int x;
+    private final int y;
     
     public City(int number, int x, int y){
         this.number=number;

@@ -55,7 +55,6 @@ public class Main {
         }
         routePopulation.setTotalFitness(totalFitness);
         routePopulation.countPeluangKumulatif();
-//        routePopulation.printAllSolution();
 
         //get the (initial = best) route, best fitness (max fitness), and best distance (min distance), and before first generation (generation = 0)
         ArrayList<City> bestRoute = (ArrayList<City>) firstRoute.getRoute().clone();
@@ -71,7 +70,6 @@ public class Main {
         ArrayList<City> firstGenerationBest = (ArrayList<City>) firstBest.getRoute().clone();
         double firstGenerationBestFitness = firstBest.getFitness();
         double firstGenerationBestDistance = firstBest.getDistance();
-        System.out.println("Solution 1: "+firstGenerationBestFitness);
         
         //check if the first generation best fitness (max fitness of first generation) is better than our assumption on initial route fitness
         if(firstGenerationBestFitness>bestFitness){
@@ -91,7 +89,6 @@ public class Main {
             ArrayList<City> bestGenerationNow = (ArrayList<City>) best.getRoute().clone();
             double bestFitnessNow = best.getFitness();
             double bestDistanceNow = best.getDistance();
-            System.out.println("Solution "+i+": "+bestFitnessNow);
             
             //check if the current generation best fitness (max fitness of current generation) is better than our assumption of best route before
             if(bestFitnessNow>bestFitness){

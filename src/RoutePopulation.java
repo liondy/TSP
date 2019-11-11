@@ -9,8 +9,8 @@
  * @author michael
  */
 public class RoutePopulation {
-    private Route[] population;
-    private int populationSize;
+    private final Route[] population;
+    private final int populationSize;
     private double totalFitness;
     
     public RoutePopulation(int populationSize){
