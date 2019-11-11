@@ -60,6 +60,7 @@ public class Main {
         int generation = 0;
         routePopulation = GA.evolve(routePopulation);
         Route firstGenerationBest = routePopulation.getFittest();
+//        System.out.println("Solution 1: "+firstGenerationBest.getFitness());
         if(firstGenerationBest.getFitness()>bestRoute.getFitness()){
             bestRoute = firstGenerationBest;
             generation = 1;
@@ -67,6 +68,7 @@ public class Main {
         for (int i = 2; i <= 100; i++) {
             routePopulation = GA.evolve(routePopulation);
             Route best = routePopulation.getFittest();
+//            System.out.println("Solution "+i+": "+best.getFitness());
             if(best.getFitness()>bestRoute.getFitness()){
                 bestRoute = best;
                 generation = i;

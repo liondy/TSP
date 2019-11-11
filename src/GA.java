@@ -17,7 +17,7 @@ public class GA {
         RoutePopulation nextGeneration = new RoutePopulation(population.getPopulationSize());
 //        System.out.println("size = "+nextGeneration.getPopulationSize());
         int j = -1;
-        for (int i = 0; i < nextGeneration.getPopulationSize()-1; i++) {
+        for (int i = 0; i < 25; i++) {
             j++;
             Route parent1 = selection(population);
             Route parent2 = selection(population);
@@ -33,7 +33,7 @@ public class GA {
             Random rand = new Random();
             int mut = rand.nextInt(2);
             mutation(child[mut]);
-            nextGeneration.addNewRoute(j, child[0]);
+            nextGeneration.addNewRoute(j++, child[0]);
             nextGeneration.addNewRoute(j, child[1]);
         }
         return nextGeneration;
